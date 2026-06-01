@@ -1,0 +1,19 @@
+@extends ('layouts.app')
+@section('content')
+
+<div class="container-fluid">
+    <div class="text-center">
+<h2>registro disquera</h2>
+</div>
+<div class="card" style="width: 30rem;margin:20px auto;">
+
+<div class="card-body">
+    <form action="{{url('/disquera')}}" method="POST">
+@include('disquera.form');
+@csrf
+</form>
+</div>
+</div>
+</div>
+
+@endsection
