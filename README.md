@@ -64,3 +64,81 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+// estenciones de visual studio
+ opilot vscode-icons prettier express Manager material icon Theme
+
+// crear proyecto php 
+
+composer create-project laravel/laravel crub-php                 
+
+// ejecutar poryecto php
+
+ php artisan serve      
+// crea la estructura de un componente
+php artisan make:model Proveedores -mcr
+
+// migra los datos a la base de de datos
+
+php artisan migrate:fresh
+
+// definir rutas en el wed.php ejemplo
+
+use App\Http\Controllers\ClienteController;
+
+Route::resource('cliente',ClienteController::class);
+
+
+
+// relacion tabla 1 a 1
+CREATE TABLE Directores (
+    ID_Director INT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Escuelas (
+    ID_Escuela INT PRIMARY KEY,
+    Nombre_Escuela VARCHAR(100) NOT NULL,
+    ID_Director INT UNIQUE, -- UNIQUE garantiza el 1:1
+    FOREIGN KEY (ID_Director) REFERENCES Directores(ID_Director)
+);
+
+// relacion 1 a muchos
+CREATE TABLE Profesores (
+    ID_Profesor INT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Cursos (
+    ID_Curso INT PRIMARY KEY,
+    Nombre_Curso VARCHAR(100) NOT NULL,
+    ID_Profesor INT,
+    FOREIGN KEY (ID_Profesor) REFERENCES Profesores(ID_Profesor)
+);
+ 
+ // relacion muchos a muchos
+
+REATE TABLE Estudiantes (
+    ID_Estudiante INT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Cursos (
+    ID_Curso INT PRIMARY KEY,
+    Nombre_Curso VARCHAR(100) NOT NULL
+);
+
+-- 2. Crear la tabla intermedia que une a ambas
+CREATE TABLE Inscripciones (
+    ID_Estudiante INT,
+    ID_Curso INT,
+    Fecha_Inscripcion DATE NOT NULL,
+    
+    -- Llave primaria compuesta: evita que un estudiante se inscriba dos veces al mismo curso
+    PRIMARY KEY (ID_Estudiante, ID_Curso), 
+    
+    -- Relaciones (Llaves Foráneas)
+    FOREIGN KEY (ID_Estudiante) REFERENCES Estudiantes(ID_Estudiante),
+    FOREIGN KEY (ID_Curso) REFERENCES Cursos(ID_Curso)
+);
+Usa el código con precaución.¿Te gustaría ver cómo hacer una consulta SELECT con JOIN para listar qué estudiantes están inscritos en qué cursos?Hacer un

@@ -39,6 +39,4 @@ Route::resource('disquera',DisqueraController::class);
 Route::resource('factura',FacturaController::class);
 Route::resource('genero',GeneroController::class);
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
